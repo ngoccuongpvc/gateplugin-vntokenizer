@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<CREOLE-DIRECTORY>
+
+	<!-- plugins can require other plugins.
+	For example to require ANNIE you would include the following:
+	<REQUIRES GROUP="uk.ac.gate.plugins" ARTIFACT="annie" VERSION="8.5-SNAPSHOT"/>
+	-->
+	<CREOLE>
+		<JAR>target/vntokenizer-1.0.jar</JAR>
+		<RESOURCE>
+			<NAME>Vietnamese Tokenizer</NAME>
+			<CLASS>vntokenizer.vntokenizer</CLASS>
+		</RESOURCE>
+	</CREOLE>
+</CREOLE-DIRECTORY>
