@@ -61,9 +61,27 @@
 			copy-paste the XML. Any GATE plugins needed at compile
 			time should use "<scope>provided</scope>" -->
 		<dependency>
-			<groupId>com.github.vncorenlp</groupId>
+			<groupId>com.github.ngoccuongpvc</groupId>
 			<artifactId>VnCoreNLP</artifactId>
-			<version>v1.1.1</version>
+			<version>8c16dff618</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

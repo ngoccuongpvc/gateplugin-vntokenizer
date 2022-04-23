@@ -10,6 +10,7 @@ import gate.creole.metadata.*;
 import gate.util.InvalidOffsetException;
 import org.apache.log4j.Logger;
 import vn.pipeline.VnCoreNLP;
+import vn.pipeline.Word;
 
 import java.io.IOException;
 
@@ -102,19 +103,77 @@ public class vntokenizer extends AbstractLanguageAnalyser {
     log.info(content);
     log.info(length);
 
-    FeatureMap newTokenFm;
-    newTokenFm = Factory.newFeatureMap();
-    String tokenString = content.substring(0, 10);
-
-    log.info("Token: " + tokenString);
-
-    newTokenFm.put(TOKEN_STRING_FEATURE_NAME, tokenString);
-    newTokenFm.put(TOKEN_LENGTH_FEATURE_NAME, tokenString.length());
+    String[] annotators = {"wseg"};
     try {
-      annotationSet.add(0L, 10L, "DEFAULT_TOKEN", newTokenFm);
-    } catch (InvalidOffsetException e) {
+      VnCoreNLP pipeline = new VnCoreNLP(annotators);
+      vn.pipeline.Annotation annotation = new vn.pipeline.Annotation(content);
+      pipeline.annotate(annotation);
+
+      int posDoc = 0;
+
+      for (Word word : annotation.getWords()) {
+        while (posDoc < length && content.charAt(posDoc) == ' ') {
+          FeatureMap newTokenFm = Factory.newFeatureMap();
+          newTokenFm.put(TOKEN_STRING_FEATURE_NAME, " ");
+          newTokenFm.put(TOKEN_LENGTH_FEATURE_NAME, 1);
+          newTokenFm.put(TOKEN_KIND_FEATURE_NAME, "space");
+          try {
+            annotationSet.add((long) posDoc, (long) (posDoc + 1), "SpaceToken", newTokenFm);
+          } catch (InvalidOffsetException e) {
+            e.printStackTrace();
+          }
+          posDoc += 1;
+        }
+        log.info(word.getForm());
+        String form = word.getForm();
+
+        int i = 0;
+        int j = 0;
+        while (j < form.length()) {
+          while (posDoc + i < length &&
+                  content.charAt(posDoc + i) == ' '
+          ) {
+            FeatureMap newTokenFm = Factory.newFeatureMap();
+            newTokenFm.put(TOKEN_STRING_FEATURE_NAME, "_");
+            newTokenFm.put(TOKEN_LENGTH_FEATURE_NAME, 1);
+            newTokenFm.put(TOKEN_KIND_FEATURE_NAME, "underscore");
+            try {
+              annotationSet.add((long) posDoc + i, (long) (posDoc + i + 1), "UnderscoreToken", newTokenFm);
+            } catch (InvalidOffsetException e) {
+              e.printStackTrace();
+            }
+            i += 1;
+          }
+          if (posDoc + i < length && content.charAt(i) == content.charAt(j)) {
+            i += 1;
+          }
+          j += 1;
+        }
+
+        log.info(posDoc + i);
+        FeatureMap newTokenFm = Factory.newFeatureMap();
+        newTokenFm.put(TOKEN_STRING_FEATURE_NAME, form);
+        newTokenFm.put(TOKEN_LENGTH_FEATURE_NAME, form.length());
+
+        if (",;:.!?'`\"-/()[]*".contains(form)) {
+          newTokenFm.put(TOKEN_KIND_FEATURE_NAME, "punctuation");
+        } else {
+          newTokenFm.put(TOKEN_KIND_FEATURE_NAME, "word");
+        }
+
+        try {
+          annotationSet.add((long) posDoc, (long) (posDoc + i), "Token", newTokenFm);
+        } catch (InvalidOffsetException e) {
+          e.printStackTrace();
+        }
+
+        posDoc += i;
+      }
+
+    } catch (IOException e) {
       e.printStackTrace();
     }
+
 
     fireProcessFinished();
     fireStatusChanged("Tokenized successfully");
