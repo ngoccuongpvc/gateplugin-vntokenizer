@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84af72fb-4aca-40b2-a0bd-7e6b1560f1e8" name="Changes" comment="add resources">
-      <change afterPath="$PROJECT_DIR$/src/main/java/vntokenizer/Tokenizer.java" afterDir="false" />
+    <list default="true" id="84af72fb-4aca-40b2-a0bd-7e6b1560f1e8" name="Changes" comment="implement rule-based sentence splitter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creole.xml" beforeDir="false" afterPath="$PROJECT_DIR$/creole.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vntokenizer/vntokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vntokenizer/SentenceSplitter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/creole.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/creole.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vntokenizer/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vntokenizer/Tokenizer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1650715625371</updated>
       <workItem from="1650715626658" duration="13834000" />
-      <workItem from="1650732473906" duration="18246000" />
+      <workItem from="1650732473906" duration="22864000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <created>1650726414401</created>
@@ -105,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650742340944</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="implement rule-based sentence splitter">
+      <created>1650785996860</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650785996860</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +129,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="second commit" />
     <MESSAGE value="add resources" />
-    <option name="LAST_COMMIT_MESSAGE" value="add resources" />
+    <MESSAGE value="implement rule-based sentence splitter" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement rule-based sentence splitter" />
   </component>
 </project>

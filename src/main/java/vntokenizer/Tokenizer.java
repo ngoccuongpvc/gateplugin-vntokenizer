@@ -13,6 +13,7 @@ import vn.pipeline.VnCoreNLP;
 import vn.pipeline.Word;
 
 import java.io.IOException;
+import java.text.Normalizer;
 
 @CreoleResource(
     name = "vntokenizer",
@@ -98,11 +99,9 @@ public class Tokenizer extends AbstractLanguageAnalyser {
     fireStatusChanged("Tokenizing " + doc.getName() + "...");
 
     String content = document.getContent().toString();
+
     int length = content.length();
-
-    log.info(content);
-    log.info(length);
-
+    String noTonedContent = Normalizer.normalize(content, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     String[] annotators = {"wseg"};
     try {
       VnCoreNLP pipeline = new VnCoreNLP(annotators);
@@ -112,7 +111,7 @@ public class Tokenizer extends AbstractLanguageAnalyser {
       int posDoc = 0;
 
       for (Word word : annotation.getWords()) {
-        while (posDoc < length && content.charAt(posDoc) == ' ') {
+        while (posDoc < length && noTonedContent.charAt(posDoc) == ' ') {
           FeatureMap newTokenFm = Factory.newFeatureMap();
           newTokenFm.put(TOKEN_STRING_FEATURE_NAME, " ");
           newTokenFm.put(TOKEN_LENGTH_FEATURE_NAME, 1);
@@ -124,14 +123,19 @@ public class Tokenizer extends AbstractLanguageAnalyser {
           }
           posDoc += 1;
         }
-        log.info(word.getForm());
         String form = word.getForm();
+        String noTonedForm = Normalizer.normalize(form, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+
+        while (posDoc < length && noTonedContent.charAt(posDoc) != noTonedForm.charAt(0)) {
+          posDoc += 1;
+        }
 
         int i = 0;
         int j = 0;
         while (j < form.length()) {
           while (posDoc + i < length &&
-                  content.charAt(posDoc + i) == ' '
+                  noTonedContent.charAt(posDoc + i) == ' ' ||
+                  noTonedContent.charAt(posDoc + i) == '\n'
           ) {
             FeatureMap newTokenFm = Factory.newFeatureMap();
             newTokenFm.put(TOKEN_STRING_FEATURE_NAME, "_");
@@ -144,13 +148,12 @@ public class Tokenizer extends AbstractLanguageAnalyser {
             }
             i += 1;
           }
-          if (posDoc + i < length && content.charAt(i) == content.charAt(j)) {
+          if (posDoc + i < length && noTonedContent.charAt(posDoc + i) == noTonedForm.charAt(j)) {
             i += 1;
           }
           j += 1;
         }
 
-        log.info(posDoc + i);
         FeatureMap newTokenFm = Factory.newFeatureMap();
         newTokenFm.put(TOKEN_STRING_FEATURE_NAME, form);
         newTokenFm.put(TOKEN_LENGTH_FEATURE_NAME, form.length());
