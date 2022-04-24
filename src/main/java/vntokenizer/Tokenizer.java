@@ -17,9 +17,9 @@ import java.io.IOException;
 @CreoleResource(
     name = "vntokenizer",
     comment = "(A short one-line description of this PR, suitable for a tooltip in the GUI)")
-public class vntokenizer extends AbstractLanguageAnalyser {
+public class Tokenizer extends AbstractLanguageAnalyser {
 
-  private static final Logger log = Logger.getLogger(vntokenizer.class);
+  private static final Logger log = Logger.getLogger(Tokenizer.class);
 
   /**
    * Annotation set name from which this PR will take its input annotations.

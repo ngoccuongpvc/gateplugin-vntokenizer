@@ -9,7 +9,11 @@
 		<JAR>target/vntokenizer-1.0.jar</JAR>
 		<RESOURCE>
 			<NAME>Vietnamese Tokenizer</NAME>
-			<CLASS>vntokenizer.vntokenizer</CLASS>
+			<CLASS>vntokenizer.Tokenizer</CLASS>
+		</RESOURCE>
+		<RESOURCE>
+			<NAME>Vietnamese Sentence Splitter</NAME>
+			<CLASS>vntokenizer.SentenceSplitter</CLASS>
 		</RESOURCE>
 	</CREOLE>
 </CREOLE-DIRECTORY>

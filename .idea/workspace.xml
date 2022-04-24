@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84af72fb-4aca-40b2-a0bd-7e6b1560f1e8" name="Changes" comment="second commit">
+    <list default="true" id="84af72fb-4aca-40b2-a0bd-7e6b1560f1e8" name="Changes" comment="add resources">
+      <change afterPath="$PROJECT_DIR$/src/main/java/vntokenizer/Tokenizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vntokenizer/vntokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vntokenizer/vntokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/creole.xml" beforeDir="false" afterPath="$PROJECT_DIR$/creole.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vntokenizer/vntokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vntokenizer/SentenceSplitter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/creole.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/creole.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +28,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/vntokenizer/vntokenizer.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/vntokenizer/Tokenizer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/creole.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/creole.xml" root0="FORCE_HIGHLIGHTING" />
@@ -67,6 +69,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="vntokenizer" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -77,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1650715625371</updated>
       <workItem from="1650715626658" duration="13834000" />
-      <workItem from="1650732473906" duration="7136000" />
+      <workItem from="1650732473906" duration="18246000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <created>1650726414401</created>
@@ -86,7 +91,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650726414401</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="second commit">
+      <created>1650742215235</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650742215235</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add resources">
+      <created>1650742340944</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650742340944</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +124,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="second commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="second commit" />
+    <MESSAGE value="add resources" />
+    <option name="LAST_COMMIT_MESSAGE" value="add resources" />
   </component>
 </project>
